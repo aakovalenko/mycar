@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\IronHorse;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Fueling */
@@ -12,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'iron_horse_id')->textInput() ?>
+  <!--  --><?/*= $form->field($model, 'iron_horse_id')->dropDownList() */?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 

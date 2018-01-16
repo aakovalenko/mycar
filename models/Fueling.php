@@ -51,4 +51,9 @@ class Fueling extends \yii\db\ActiveRecord
             'mileage' => Yii::t('app', 'Mileage'),
         ];
     }
+
+    public function getIronHorse()
+    {
+        return $this->hasOne(IronHorse::className(), ['id' => 'iron_horse_id']);
+    }
 }
