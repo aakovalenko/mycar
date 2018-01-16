@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+
 
     <?= $form->field($model, 'brand')->textInput(['maxlength' => true]) ?>
 
@@ -27,10 +27,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'mileage')->textInput() ?>
 
     <?= $form->field($model, 'color')->textInput() ?>
-
-    <?= $form->field($model, 'create_at')->textInput() ?>
-
-    <?= $form->field($model, 'update_at')->textInput() ?>
 
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 

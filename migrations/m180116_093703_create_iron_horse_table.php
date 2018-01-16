@@ -27,7 +27,7 @@ class m180116_093703_create_iron_horse_table extends Migration
         'engine' => $this->integer(4) ,
         'equipment' =>$this->string(10) ,
         'mileage' => $this->integer(11) ,
-        'color' => $this-> integer(11),
+        'color' => $this-> string(11),
         'create_at' => $this-> integer(11),
         'update_at' => $this-> integer(11),
         'image' => $this-> string(255),

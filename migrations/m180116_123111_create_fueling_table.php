@@ -21,6 +21,7 @@ class m180116_123111_create_fueling_table extends Migration
         $this->createTable('fueling', [
             'id' => $this->primaryKey(11),
             'iron_horse_id' => $this->integer(11),
+            'user_id' => $this->integer(11),
             'date' => $this->integer(),
             'fuel_type' => $this->integer(11),
             'price_per_liter' => $this->float(11),
@@ -32,6 +33,12 @@ class m180116_123111_create_fueling_table extends Migration
             'idx-fueling-iron_horse_id',
             'fueling',
             'iron_horse_id'
+        );
+
+        $this->createIndex(
+            'idx-fueling-user_id',
+            'fueling',
+            'user_id'
         );
     }
 

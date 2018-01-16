@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\models\IronHorse */
 
@@ -29,7 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => 'user.username',
+            ],
+
             'brand',
             'model',
             'year',
@@ -37,8 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'equipment',
             'mileage',
             'color',
-            'create_at',
-            'update_at',
+            'create_at:datetime',
+            'update_at:datetime',
             'image',
         ],
     ]) ?>

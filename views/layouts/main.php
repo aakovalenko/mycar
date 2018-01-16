@@ -42,6 +42,7 @@ AppAsset::register($this);
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Iron Horse', 'url' => ['/iron-horse/'],'visible' => !Yii::$app->user->isGuest],
+        ['label' => 'Fueling', 'url' => ['/fueling/'],'visible' => !Yii::$app->user->isGuest],
     ];
 
     if (Yii::$app->user->isGuest) {
