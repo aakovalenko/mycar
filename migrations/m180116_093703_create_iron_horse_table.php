@@ -32,9 +32,13 @@ class m180116_093703_create_iron_horse_table extends Migration
         'update_at' => $this-> integer(11),
         'image' => $this-> string(255),
 
-        ]);
+        ], $tableOptions);
 
-
+        $this->createIndex(
+            'idx-iron_horse-user_id',
+            'iron_horse',
+            'user_id'
+        );
     }
 
     /**
