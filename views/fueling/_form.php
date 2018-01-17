@@ -2,9 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use app\models\IronHorse;
-
 use dosamigos\datepicker\DatePicker;
 
 
@@ -18,6 +15,7 @@ use dosamigos\datepicker\DatePicker;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'date')->widget(DatePicker::className(),[
+
         'clientOptions' => [
                 'autoclose' => true,
                 'format' => 'yyyy-mm-dd'
@@ -25,28 +23,6 @@ use dosamigos\datepicker\DatePicker;
     ]) ?>
 
     <?= $form->field($model, 'fuel_type')->textInput() ?>
-
-   <? $items = [
-    'Активный' => [
-    '0' => 'Админ',
-    '1' => 'Модератор',
-    '2' => 'Пользователь',
-    ],
-    'Отключен' => [
-    '3' => 'За нарушения',
-    '4' => 'Самостоятельно',
-    ],
-    'Удален' => [
-    '5' => 'Админом',
-    '6' => 'Самостоятельно',
-    ],
-    ];
-    $params = [
-    'prompt' => 'Выберите статус...',
-    ]; ?>
-
-    <?= field($model, 'status')->dropDownList($items,$params)
-    ?>
 
     <?= $form->field($model, 'price_per_liter')->textInput() ?>
 

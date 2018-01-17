@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -41,10 +42,21 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Iron Horse', 'url' => ['/iron-horse/'],'visible' => !Yii::$app->user->isGuest],
-        ['label' => 'Fueling', 'url' => ['/fueling/'],'visible' => !Yii::$app->user->isGuest],
-        ['label' => 'Blog', 'url' => ['/blog/'],'visible' => !Yii::$app->user->isGuest],
+
+        ['label' => 'MyCar',
+            'url' => ['services/index'],
+            'options'=>['class'=>'dropdown'],
+            'template' => '<a href="{url}" class="url-class">{label}</a>',
+            'items' => [
+                    ['label' => 'Iron Horse', 'url' => ['/iron-horse/'],'visible' => !Yii::$app->user->isGuest],
+                ['label' => 'Fueling', 'url' => ['/fueling/'],'visible' => !Yii::$app->user->isGuest],
+                ['label' => 'Maintenance', 'url' => ['/maintenance/'],'visible' => !Yii::$app->user->isGuest],
+                ['label' => 'Blog', 'url' => ['/blog/'],'visible' => !Yii::$app->user->isGuest],
+            ]
+        ],
     ];
+
+
 
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
