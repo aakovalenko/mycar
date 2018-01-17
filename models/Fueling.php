@@ -31,8 +31,9 @@ class Fueling extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['iron_horse_id', 'date', 'fuel_type', 'mileage'], 'integer'],
+            [['iron_horse_id', 'user_id', 'fuel_type', 'mileage'], 'integer'],
             [['price_per_liter', 'liters'], 'number'],
+            [['date'],'safe'],
         ];
     }
 
@@ -44,6 +45,7 @@ class Fueling extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'iron_horse_id' => Yii::t('app', 'Iron Horse ID'),
+            'user_id' => Yii::t('app', 'User'),
             'date' => Yii::t('app', 'Date'),
             'fuel_type' => Yii::t('app', 'Fuel Type'),
             'price_per_liter' => Yii::t('app', 'Price Per Liter'),
@@ -55,5 +57,10 @@ class Fueling extends \yii\db\ActiveRecord
     public function getIronHorse()
     {
         return $this->hasOne(IronHorse::className(), ['id' => 'iron_horse_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

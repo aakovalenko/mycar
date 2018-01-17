@@ -18,7 +18,7 @@ class FuelingSearch extends Fueling
     public function rules()
     {
         return [
-            [['id', 'iron_horse_id', 'date', 'fuel_type', 'mileage'], 'integer'],
+            [['id', 'iron_horse_id', 'user_id', 'date', 'fuel_type', 'mileage'], 'integer'],
             [['price_per_liter', 'liters'], 'number'],
         ];
     }
@@ -61,6 +61,7 @@ class FuelingSearch extends Fueling
         $query->andFilterWhere([
             'id' => $this->id,
             'iron_horse_id' => $this->iron_horse_id,
+            'user_id' => $this->user_id,
             'date' => $this->date,
             'fuel_type' => $this->fuel_type,
             'price_per_liter' => $this->price_per_liter,

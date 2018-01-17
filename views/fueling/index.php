@@ -26,6 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            [
+                'attribute' => 'user_id',
+                'value' => 'user.username'
+            ],
             'iron_horse_id',
             'date',
             'fuel_type',

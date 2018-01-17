@@ -5,6 +5,9 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\IronHorse;
 
+use dosamigos\datepicker\DatePicker;
+
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Fueling */
 /* @var $form yii\widgets\ActiveForm */
@@ -14,9 +17,12 @@ use app\models\IronHorse;
 
     <?php $form = ActiveForm::begin(); ?>
 
-  <!--  --><?/*= $form->field($model, 'iron_horse_id')->dropDownList() */?>
-
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->widget(DatePicker::className(),[
+        'clientOptions' => [
+                'autoclose' => true,
+                'format' => 'yyyy-mm-dd'
+        ]
+    ]) ?>
 
     <?= $form->field($model, 'fuel_type')->textInput() ?>
 

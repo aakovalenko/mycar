@@ -29,6 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
+            [
+                    'attribute' => 'user_id',
+                    'value' => 'user.username'
+            ],
+
             'iron_horse_id',
             'date',
             'fuel_type',
