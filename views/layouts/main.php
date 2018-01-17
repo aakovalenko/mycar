@@ -46,12 +46,13 @@ AppAsset::register($this);
         ['label' => 'MyCar',
             'url' => ['services/index'],
             'options'=>['class'=>'dropdown'],
+            'visible' => !Yii::$app->user->isGuest,
             'template' => '<a href="{url}" class="url-class">{label}</a>',
             'items' => [
-                    ['label' => 'Iron Horse', 'url' => ['/iron-horse/'],'visible' => !Yii::$app->user->isGuest],
-                ['label' => 'Fueling', 'url' => ['/fueling/'],'visible' => !Yii::$app->user->isGuest],
-                ['label' => 'Maintenance', 'url' => ['/maintenance/'],'visible' => !Yii::$app->user->isGuest],
-                ['label' => 'Blog', 'url' => ['/blog/'],'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Iron Horse', 'url' => ['/iron-horse/']],
+                ['label' => 'Fueling', 'url' => ['/fueling/']],
+                ['label' => 'Maintenance', 'url' => ['/maintenance/']],
+                ['label' => 'Blog', 'url' => ['/blog/']],
             ]
         ],
     ];
