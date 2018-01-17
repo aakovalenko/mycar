@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Fueling */
@@ -30,8 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             [
-                    'attribute' => 'user_id',
-                    'value' => 'user.username'
+                'attribute' => 'user_id',
+                'value'=> function ($e){
+                    return $e->user->username;
+                },
             ],
 
             'iron_horse_id',

@@ -26,6 +26,28 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'fuel_type')->textInput() ?>
 
+   <? $items = [
+    'Активный' => [
+    '0' => 'Админ',
+    '1' => 'Модератор',
+    '2' => 'Пользователь',
+    ],
+    'Отключен' => [
+    '3' => 'За нарушения',
+    '4' => 'Самостоятельно',
+    ],
+    'Удален' => [
+    '5' => 'Админом',
+    '6' => 'Самостоятельно',
+    ],
+    ];
+    $params = [
+    'prompt' => 'Выберите статус...',
+    ]; ?>
+
+    <?= field($model, 'status')->dropDownList($items,$params)
+    ?>
+
     <?= $form->field($model, 'price_per_liter')->textInput() ?>
 
     <?= $form->field($model, 'liters')->textInput() ?>
