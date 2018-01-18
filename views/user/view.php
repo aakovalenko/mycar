@@ -40,9 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-    <h3 style="color: #985f0d">Мои тачки: <?php foreach($model->horse as $car):?>
+    <h3 style="color: #5cb85c">Мои тачки: <span style="color: #337ab7">
+            <?php foreach($model->horse as $car):?>
         <?=$car->brand.' '. $car->model.','; ?>
-        <?php endforeach;?>
+            <?php endforeach;?></span>
 
     </h3>
 
