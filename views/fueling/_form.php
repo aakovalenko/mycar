@@ -22,6 +22,8 @@ use dosamigos\datepicker\DatePicker;
         ]
     ]) ?>
 
+    <?= $form->field($model, 'gas_station')->textInput() ?>
+
     <?= $form->field($model, 'fuel_type')->textInput() ?>
 
     <?= $form->field($model, 'price_per_liter')->textInput() ?>

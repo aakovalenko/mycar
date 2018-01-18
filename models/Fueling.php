@@ -32,6 +32,7 @@ class Fueling extends \yii\db\ActiveRecord
     {
         return [
             [['iron_horse_id', 'user_id', 'fuel_type', 'mileage'], 'integer'],
+            [['gas_station'],'string'],
             [['price_per_liter', 'liters'], 'number'],
             [['date'],'safe'],
         ];
@@ -47,6 +48,7 @@ class Fueling extends \yii\db\ActiveRecord
             'iron_horse_id' => Yii::t('app', 'Iron Horse ID'),
             'user_id' => Yii::t('app', 'User'),
             'date' => Yii::t('app', 'Date'),
+            'gas_station' => Yii::t('app', 'Gas Station'),
             'fuel_type' => Yii::t('app', 'Fuel Type'),
             'price_per_liter' => Yii::t('app', 'Price Per Liter'),
             'liters' => Yii::t('app', 'Liters'),

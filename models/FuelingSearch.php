@@ -19,6 +19,7 @@ class FuelingSearch extends Fueling
     {
         return [
             [['id', 'iron_horse_id', 'user_id', 'date', 'fuel_type', 'mileage'], 'integer'],
+            [['gas_station'], 'string'],
             [['price_per_liter', 'liters'], 'number'],
         ];
     }
@@ -63,6 +64,7 @@ class FuelingSearch extends Fueling
             'iron_horse_id' => $this->iron_horse_id,
             'user_id' => $this->user_id,
             'date' => $this->date,
+            'gas_station' => $this->gas_station,
             'fuel_type' => $this->fuel_type,
             'price_per_liter' => $this->price_per_liter,
             'liters' => $this->liters,

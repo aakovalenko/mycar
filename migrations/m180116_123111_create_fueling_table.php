@@ -23,6 +23,7 @@ class m180116_123111_create_fueling_table extends Migration
             'iron_horse_id' => $this->integer(11),
             'user_id' => $this->integer(11),
             'date' => $this->date(),
+            'gas_station' => $this->string(100),
             'fuel_type' => $this->integer(11),
             'price_per_liter' => $this->float(11),
             'liters' => $this->float(11),

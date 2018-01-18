@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blog".
@@ -25,6 +27,21 @@ class Blog extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'blog';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['create_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['update_at'],
+                ],
+                // если вместо метки времени UNIX используется datetime:
+                // 'value' => new Expression('NOW()'),
+            ],
+        ];
     }
 
     /**
@@ -57,4 +74,6 @@ class Blog extends \yii\db\ActiveRecord
             'date_update' => Yii::t('app', 'Date Update'),
         ];
     }
+
+
 }
