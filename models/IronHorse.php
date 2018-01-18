@@ -88,4 +88,8 @@ class IronHorse extends ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public function getBrandModel(){
+        return $this->brand . ' ' . $this->model;
+    }
 }

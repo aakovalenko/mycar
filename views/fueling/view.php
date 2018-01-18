@@ -29,15 +29,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+           // 'id',
             [
                 'attribute' => 'user_id',
-                'value'=> function ($e){
+                'value' => function ($e) {
                     return $e->user->username;
                 },
             ],
 
-            'iron_horse_id',
+            [
+                    'attribute' => 'iron_horse_id',
+                    'value' => function ($e) {
+                        return $e->horse->brand.' '. $e->horse->model;
+                    }
+            ],
             'date',
             'gas_station',
             'fuel_type',

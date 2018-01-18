@@ -23,9 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             [
                 'attribute' => 'user_id',
                 'value' => 'user.username'
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'fuel_type',
             'price_per_liter',
             //'liters',
-            //'mileage',
+            'mileage',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

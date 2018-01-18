@@ -45,7 +45,7 @@ class Fueling extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'iron_horse_id' => Yii::t('app', 'Iron Horse ID'),
+            'iron_horse_id' => Yii::t('app', 'Iron Horse'),
             'user_id' => Yii::t('app', 'User'),
             'date' => Yii::t('app', 'Date'),
             'gas_station' => Yii::t('app', 'Gas Station'),
@@ -58,6 +58,11 @@ class Fueling extends \yii\db\ActiveRecord
 
     public function getIronHorse()
     {
+        return $this->hasMany(IronHorse::className(), ['id' => 'iron_horse_id']);
+    }
+
+    public function getHorse()
+    {
         return $this->hasOne(IronHorse::className(), ['id' => 'iron_horse_id']);
     }
 
@@ -65,4 +70,6 @@ class Fueling extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+
 }
