@@ -8,6 +8,7 @@ use app\models\FuelingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * FuelingController implements the CRUD actions for Fueling model.
@@ -94,6 +95,24 @@ class FuelingController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    public function actionLastMileage($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $fueling = Fueling::find()
+            ->orderBy(['id' => SORT_DESC])
+            ->where(['iron_horse_id' => $id])
+            ->limit(1)
+            ->one();
+        if(!$fueling){
+            return [
+                'mileage' => false,
+            ];
+        }
+        return [
+            'mileage' => $fueling->mileage,
+        ];
     }
 
     /**

@@ -18,8 +18,8 @@ class FuelingSearch extends Fueling
     public function rules()
     {
         return [
-            [['id', 'iron_horse_id', 'user_id', 'date', 'fuel_type', 'mileage'], 'integer'],
-            [['gas_station'], 'string'],
+            [['id', 'iron_horse_id', 'user_id', 'date', 'mileage'], 'integer'],
+            [['gas_station', 'fuel_type'], 'string'],
             [['price_per_liter', 'liters'], 'number'],
         ];
     }

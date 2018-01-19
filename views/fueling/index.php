@@ -30,7 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'user_id',
                 'value' => 'user.username'
             ],
-            'iron_horse_id',
+            [
+                    'attribute' => 'iron_horse_id',
+                    'value' => 'horse.brand'
+],
+
             'date',
             'gas_station',
             'fuel_type',

@@ -31,8 +31,8 @@ class Fueling extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['iron_horse_id', 'user_id', 'fuel_type', 'mileage'], 'integer'],
-            [['gas_station'],'string'],
+            [['iron_horse_id', 'user_id', 'mileage'], 'integer'],
+            [['gas_station','fuel_type'],'string'],
             [['price_per_liter', 'liters'], 'number'],
             [['date'],'safe'],
         ];
