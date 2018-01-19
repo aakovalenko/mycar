@@ -52,8 +52,12 @@ class BlogController extends Controller
 
     public function actionOne($url)
     {
-        $blog = Blog::find()->andWhere(['url' => $url])->one();
-        return $this->render('one',['blog' => $blog]);
+        if ($blog = Blog::find()->andWhere(['url' => $url])->one())
+        {
+            return $this->render('one',['blog' => $blog]);
+        }
+            throw new NotFoundHttpException('Oh no such article!!!');
+
     }
 
     /**

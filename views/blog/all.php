@@ -11,6 +11,7 @@
                 <h2><?=$one->title ?></h2>
 
                 <p><?=$one->text?></p>
+                <?= \yii\helpers\Html::a('Learn More',['blog/one','url'=>$one->url])?>
             </div>
         <?php endforeach;?>
 
