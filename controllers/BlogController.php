@@ -44,6 +44,18 @@ class BlogController extends Controller
         ]);
     }
 
+    public function actionAll()
+    {
+        $blogs = Blog::find()->andWhere(['status_id' => 1])->orderBy('sort')->all();
+        return $this->render('all',['blogs' => $blogs]);
+    }
+
+    public function actionOne($url)
+    {
+        $blog = Blog::find()->andWhere(['url' => $url])->one();
+        return $this->render('one',['blog' => $blog]);
+    }
+
     /**
      * Displays a single Blog model.
      * @param integer $id

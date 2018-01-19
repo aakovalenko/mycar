@@ -64,7 +64,7 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
+            'user_id' => Yii::t('app', 'User'),
             'title' => Yii::t('app', 'Title'),
             'text' => Yii::t('app', 'Text'),
             'url' => Yii::t('app', 'Url'),
@@ -73,6 +73,11 @@ class Blog extends \yii\db\ActiveRecord
             'date_create' => Yii::t('app', 'Date Create'),
             'date_update' => Yii::t('app', 'Date Update'),
         ];
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(),['id' => 'user_id']);
     }
 
 

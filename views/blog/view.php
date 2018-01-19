@@ -29,14 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
+            [
+                   'attribute' =>  'user_id',
+                'value' => function ($e)
+                {
+                    return $e->user->username;
+                }
+            ],
+
             'title',
             'text:ntext',
             'url:url',
             'status_id',
             'sort',
-            'date_create',
-            'date_update',
+            'date_create:date',
+            'date_update:datetime',
         ],
     ]) ?>
 
