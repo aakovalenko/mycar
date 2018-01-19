@@ -66,10 +66,12 @@ class BlogController extends Controller
     {
         $model = new Blog();
         $model->user_id = Yii::$app->user->id;
+        $model->sort = 50;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
 
         return $this->render('create', [
             'model' => $model,

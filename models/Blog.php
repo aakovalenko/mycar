@@ -35,8 +35,8 @@ class Blog extends \yii\db\ActiveRecord
             [
                 'class' => TimestampBehavior::className(),
                 'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['create_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['update_at'],
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['date_create'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['date_update'],
                 ],
                 // если вместо метки времени UNIX используется datetime:
                 // 'value' => new Expression('NOW()'),
@@ -51,8 +51,8 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'status_id', 'sort', 'date_create', 'date_update'], 'integer'],
-            [['text'], 'string'],
-            [['title'], 'string', 'max' => 150],
+            [['text','title'], 'string'],
+            [['sort'],'integer', 'max' => 99, 'min' => 1],
             [['url'], 'string', 'max' => 255],
         ];
     }

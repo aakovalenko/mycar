@@ -49,7 +49,9 @@ class Maintenance extends \yii\db\ActiveRecord
         return [
             [['iron_horse_id', 'mileage'], 'integer'],
             [['date'], 'safe'],
-            [['oil', 'gearbox_oil', 'hydraulic_oil', 'oil_filter', 'air_filter', 'brake_fluid', 'coolant', 'bulbs', 'brake_pads', 'brake_discs', 'generator_belt', 'camshaft_bel', 'wheel_rotation', 'tire_pressure', 'alignment', 'battery', 'spark_plug', 'spark_plug_wire', 'additional_info'], 'string', 'max' => 50],
+            [['oil', 'gearbox_oil', 'hydraulic_oil', 'oil_filter', 'air_filter', 'brake_fluid', 'coolant', 'bulbs',
+                'brake_pads', 'brake_discs', 'generator_belt', 'camshaft_bel', 'wheel_rotation', 'tire_pressure',
+                'alignment', 'battery', 'spark_plug', 'spark_plug_wire', 'additional_info'], 'string', 'max' => 50],
         ];
     }
 
@@ -60,7 +62,7 @@ class Maintenance extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'iron_horse_id' => Yii::t('app', 'Iron Horse ID'),
+            'iron_horse_id' => Yii::t('app', 'Iron Horse'),
             'mileage' => Yii::t('app', 'Mileage'),
             'oil' => Yii::t('app', 'Oil'),
             'gearbox_oil' => Yii::t('app', 'Gearbox Oil'),
@@ -84,4 +86,6 @@ class Maintenance extends \yii\db\ActiveRecord
             'additional_info' => Yii::t('app', 'Additional Info'),
         ];
     }
+
+
 }

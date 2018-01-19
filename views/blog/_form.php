@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status_id')->textInput() ?>
+    <?= $form->field($model, 'status_id')->dropDownList(['on', 'off']) ?>
 
     <?= $form->field($model, 'sort')->textInput() ?>
 

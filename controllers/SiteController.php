@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Blog;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -13,6 +14,7 @@ use app\models\User;
 use app\models\SignupForm;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
+use yii\data\Pagination;
 
 class SiteController extends Controller
 {
@@ -99,7 +101,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $blogs = Blog::find()->andWhere(['status_id' => 1])->orderBy('sort')->all();
+
+
+
+        return $this->render('index', [
+
+            'blogs' => $blogs
+        ]);
     }
 
     /**

@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'iron_horse_id')->textInput() ?>
+    <?= $form->field($model, 'iron_horse_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+            \app\models\IronHorse::find()->all(),'id','brandModel'),['prompt' => 'Select your Car: ']) ?>
 
     <?= $form->field($model, 'mileage')->textInput() ?>
 
@@ -54,7 +55,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'additional_info')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'additional_info')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

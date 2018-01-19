@@ -13,7 +13,7 @@ use app\models\IronHorse;
 /* @var $form yii\widgets\ActiveForm */
 
 /*
-Getting last mileage for select car
+* Getting last mileage for select car
 */
 $url = \yii\helpers\Url::to(['/fueling/last-mileage']);
 $js = <<<JS
@@ -44,12 +44,14 @@ $listData = [
     'gas' => ['propane'=>'propane','methane'=>'methane'],
     'diesel oil'=> ['diesel'=>'diesel','winter diesel'=>'winter diesel','arctic diesel'=>'arctic diesel']
 ];
-
-if ($model->isNewRecord)
+/*
+ * Get Last Mileage in BD
+ */
+/*if ($model->isNewRecord)
 {
     $model->mileage = \app\models\Fueling::find()
         ->orderBy(['id' => SORT_DESC])->limit(1)->one()->mileage;
-}
+}*/
 
 ?>
 

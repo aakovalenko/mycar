@@ -32,7 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                     'attribute' => 'iron_horse_id',
-                    'value' => 'horse.brand'
+                    'value' => 'horse.model'
+
 ],
 
             'date',
