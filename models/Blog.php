@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "blog".
@@ -51,9 +52,10 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'status_id', 'sort', 'date_create', 'date_update'], 'integer'],
-            [['text','title'], 'string'],
+            [['text','title','picture'], 'string'],
             [['sort'],'integer', 'max' => 99, 'min' => 1],
             [['url'], 'string', 'max' => 255],
+            [['picture'],'image', 'extensions' => 'jpg,jpeg,png,gif']
         ];
     }
 
@@ -68,6 +70,7 @@ class Blog extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'Title'),
             'text' => Yii::t('app', 'Text'),
             'url' => Yii::t('app', 'Url'),
+            'picture' => Yii::t('app', 'Picture'),
             'status_id' => Yii::t('app', 'Status ID'),
             'sort' => Yii::t('app', 'Sort'),
             'date_create' => Yii::t('app', 'Date Create'),
@@ -78,6 +81,26 @@ class Blog extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(),['id' => 'user_id']);
+    }
+
+    public function upload($model)
+    {
+        if ($this->validate()) {
+            if ($model->picture = UploadedFile::getInstance($model, 'picture')) {
+                /*if($model->picture){
+                    @unlink($model->picture);
+                }*/
+                $imageName = 'uploads/' . $model->title . date('now') . $model->picture->extension;
+                $model->picture->saveAs($imageName);
+                $model->picture = $imageName;
+                $model->save(false);
+            }
+        }
+
+    }
+    public function getPicture()
+    {
+        return $this->picture ? '/'. $this->picture : false ;
     }
 
 

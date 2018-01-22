@@ -33,6 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'text:ntext',
             'url:url',
+            [
+                'attribute' => 'Picture',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::img($model->getPicture(),['class' => 'img-responsive' ,'style' => 'max-width : 150px ']);
+                }
+            ],
             //'status_id',
             //'sort',
             'date_create:date',

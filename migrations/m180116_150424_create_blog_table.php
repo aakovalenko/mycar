@@ -24,6 +24,7 @@ class m180116_150424_create_blog_table extends Migration
             'title' => $this->string(150),
             'text' => $this->text(),
             'url' => $this->string(),
+            'picture' => $this->string(150),
             'status_id' => $this->smallInteger(1),
             'sort' => $this->smallInteger(1),
             'date_create' => $this->integer(),

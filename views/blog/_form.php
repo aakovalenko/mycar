@@ -11,7 +11,7 @@ use vova07\imperavi\Widget;
 
 <div class="blog-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -29,7 +29,9 @@ use vova07\imperavi\Widget;
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status_id')->dropDownList(['on', 'off']) ?>
+    <?= $form->field($model, 'picture')->fileInput() ?>
+
+    <?= $form->field($model, 'status_id')->dropDownList(['off', 'on']) ?>
 
     <?= $form->field($model, 'sort')->textInput() ?>
 
