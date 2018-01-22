@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use vova07\imperavi\Widget;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
@@ -15,7 +16,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    <?=  $form->field($model, 'text')->widget(Widget::className(), [
+        'settings' => [
+            'lang' => 'ru',
+            'minHeight' => 200,
+            'plugins' => [
+                'clips',
+                'fullscreen',
+            ],
+        ],
+    ]) ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
