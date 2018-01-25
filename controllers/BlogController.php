@@ -97,6 +97,7 @@ class BlogController extends Controller
         ]);
     }
 
+
     /**
      * Updates an existing Blog model.
      * If update is successful, the browser will be redirected to the 'view' page.

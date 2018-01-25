@@ -64,6 +64,7 @@ $config = [
                 'blog/update'=> 'blog/update',
                 'blog/<url>' => 'blog/one',
 
+
             ],
         ],
 

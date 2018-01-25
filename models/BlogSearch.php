@@ -45,8 +45,11 @@ class BlogSearch extends Blog
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
+        $dataProvider = new ActiveDataProvider([  // Pagination in blog/index
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 5
+            ]
         ]);
 
         $this->load($params);

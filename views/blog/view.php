@@ -40,6 +40,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'text:ntext',
             'url:url',
+            [
+                    'attribute' => 'Picture',
+                    'value' => function ($e)
+                    {
+                        return $e->picture;
+                    }
+            ],
+
             'status_id',
             'sort',
             'date_create:date',
