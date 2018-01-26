@@ -114,6 +114,11 @@ class Blog extends \yii\db\ActiveRecord
         return $this->hasMany(Blogtag::className(),['blog_id' => 'id']);
     }
 
+    public function getTags()
+    {
+        return $this->hasMany(Tag::className(),['id' => 'tag_id'])->via('blogTag');
+    }
+
 
 
 
