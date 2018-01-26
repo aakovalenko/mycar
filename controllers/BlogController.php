@@ -48,7 +48,7 @@ class BlogController extends Controller
 
     public function actionAll()
     {
-        $blogs = Blog::find()->andWhere(['status_id' => 1]);
+        $blogs = Blog::find()->with('author')->andWhere(['status_id' => 1]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $blogs,
