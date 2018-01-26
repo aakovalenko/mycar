@@ -42,4 +42,9 @@ class Blogtag extends \yii\db\ActiveRecord
             'tag_id' => Yii::t('app', 'Tag ID'),
         ];
     }
+
+    public function getTags()
+    {
+        return $this->hasOne(Tag::className(),['id' => 'tag_id']);
+    }
 }
