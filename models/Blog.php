@@ -104,6 +104,11 @@ class Blog extends \yii\db\ActiveRecord
         return $this->picture ? '/'. $this->picture : false ;
     }
 
+    public function getAuthor()
+    {
+        return $this->hasOne(User::className(),['id' => 'user_id']);
+    }
+
 
 
 

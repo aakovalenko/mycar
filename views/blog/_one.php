@@ -8,7 +8,7 @@
 ?>
 
     <div class="col-lg-12">
-        <h3><?=$model->title ?></h3>
+        <h3><?=$model->title ?><span class="badge"><?=$model->author->email?></span></h3>
 
         <p><?=$model->text?></p>
         <?= \yii\helpers\Html::a('Learn More',['blog/one','url'=>$model->url],['class'=>'btn btn-success'])?>

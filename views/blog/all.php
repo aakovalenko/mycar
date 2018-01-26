@@ -10,8 +10,8 @@
 
        <?= \yii\widgets\ListView::widget([
            'dataProvider' => $dataProvider,
-           'itemView' => '_one',
-           
+           'itemView' => '_one', //show how to render one page
+
 ]);
 ?>
     </div>

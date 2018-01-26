@@ -1,6 +1,7 @@
 <?php
 
 use yii\widgets\LinkPager;
+use yii\helpers\StringHelper;
 /* @var $this yii\web\View */
 
 $this->title = 'MyCar';
@@ -17,6 +18,7 @@ $this->title = 'MyCar';
                 <h2><?=$one->title ?></h2>
 
                 <p><?=$one->text?></p>
+                <?= \yii\helpers\Html::a('Learn More',['blog/one','url'=>$one->url],['class'=>'btn btn-success'])?>
             </div>
         <?php endforeach;?>
 

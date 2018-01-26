@@ -12,6 +12,7 @@ use app\assets\AppAsset;
 
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -87,6 +88,7 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
+
     </div>
 </div>
 
