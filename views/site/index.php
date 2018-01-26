@@ -17,7 +17,7 @@ $this->title = 'MyCar';
             <div class="col-lg-4">
                 <h2><?=$one->title ?></h2>
 
-                <p><?=$one->text?></p>
+                <p><?=\yii\helpers\StringHelper::truncate($one->text,100)?></p>
                 <?= \yii\helpers\Html::a('Learn More',['blog/one','url'=>$one->url],['class'=>'btn btn-success'])?>
             </div>
         <?php endforeach;?>
