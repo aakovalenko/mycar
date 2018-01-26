@@ -5,10 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\Blog;
 use app\models\BlogSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
+
 
 /**
  * BlogController implements the CRUD actions for Blog model.
@@ -47,8 +48,17 @@ class BlogController extends Controller
 
     public function actionAll()
     {
-        $blogs = Blog::find()->andWhere(['status_id' => 1])->orderBy('sort')->all();
-        return $this->render('all',['blogs' => $blogs]);
+        $blogs = Blog::find()->andWhere(['status_id' => 1]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $blogs,
+            'pagination' => [
+                'pageSize' => 5,
+            ]
+        ]);
+
+
+        return $this->render('all',['dataProvider' => $dataProvider]);
     }
 
     public function actionOne($url)

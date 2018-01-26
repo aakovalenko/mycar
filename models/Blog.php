@@ -53,6 +53,7 @@ class Blog extends \yii\db\ActiveRecord
         return [
             [['user_id', 'status_id', 'sort', 'date_create', 'date_update'], 'integer'],
             [['text','title','picture'], 'string'],
+            [['url'],'unique'],
             [['sort'],'integer', 'max' => 99, 'min' => 1],
             [['url'], 'string', 'max' => 255],
             [['picture'],'image', 'extensions' => 'jpg,jpeg,png,gif']
@@ -71,7 +72,7 @@ class Blog extends \yii\db\ActiveRecord
             'text' => Yii::t('app', 'Text'),
             'url' => Yii::t('app', 'Url'),
             'picture' => Yii::t('app', 'Picture'),
-            'status_id' => Yii::t('app', 'Status ID'),
+            'status_id' => Yii::t('app', 'Status'),
             'sort' => Yii::t('app', 'Sort'),
             'date_create' => Yii::t('app', 'Date Create'),
             'date_update' => Yii::t('app', 'Date Update'),
@@ -102,6 +103,8 @@ class Blog extends \yii\db\ActiveRecord
     {
         return $this->picture ? '/'. $this->picture : false ;
     }
+
+
 
 
 }

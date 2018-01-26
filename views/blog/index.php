@@ -25,13 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
            // ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+           // 'id',
             [ 'attribute' => 'user_id',
-                'value' => 'user.username'
+                'value' => 'user.username' //value - то что выводить внутри ячейки
                 ],
 
             'title',
-            'text:ntext',
+            [
+                'attribute' => 'text',
+                'format' => 'raw',
+
+            ],
+
             'url:url',
             [
                 'attribute' => 'Picture',
@@ -40,12 +45,32 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img($model->getPicture(),['class' => 'img-responsive' ,'style' => 'max-width : 150px ']);
                 }
             ],
+            [
+                    'attribute' => 'status_id',
+                   'filter' => ['off','on'],
+                    'value' => function ($model) {
+        if ($model->status_id == 1) {
+            $status = 'on';
+        } else {
+            $status = 'off';
+        }
+        return $status;
+                    }
+            ],
             //'status_id',
             //'sort',
             'date_create:date',
             //'date_update',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {check}',
+                'buttons' => [
+                        'check'=> function ($url,$model, $key) {
+                                return Html::a('<i class="fa fa-check" aria-hidden="true"></i>',$url);
+                        }
+                ]
+            ],
         ],
     ]); ?>
 </div>

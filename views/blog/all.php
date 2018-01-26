@@ -2,19 +2,16 @@
 
 /* @var $this yii\web\View */
 /* @var $blogs app\models\Blog */
+/* @var $dataProvider \yii\data\ActiveDataProvider */
+
+//$blogs = $dataProvider->getModels();
 ?>
  <div class="body-content">
 
-        <div class="row">
-          <?php foreach ($blogs as $one): ?>
-            <div class="col-lg-12">
-                <h2><?=$one->title ?></h2>
-
-                <p><?=$one->text?></p>
-                <?= \yii\helpers\Html::a('Learn More',['blog/one','url'=>$one->url],['class'=>'btn btn-success'])?>
-            </div>
-        <?php endforeach;?>
-
-        </div>
-
+       <?= \yii\widgets\ListView::widget([
+           'dataProvider' => $dataProvider,
+           'itemView' => '_one',
+           
+]);
+?>
     </div>
