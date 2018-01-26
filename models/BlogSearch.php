@@ -18,7 +18,7 @@ class BlogSearch extends Blog
     public function rules()
     {
         return [
-            [['id', 'user_id', 'status_id', 'sort', 'date_create', 'date_update'], 'integer'],
+            [['id', 'user_id', 'status_id',  'sort', 'date_create', 'date_update'], 'integer'],
             [['title', 'text', 'url'], 'safe'],
         ];
     }
