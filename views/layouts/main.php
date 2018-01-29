@@ -54,6 +54,17 @@ AppAsset::register($this);
                 ['label' => 'Fueling', 'url' => ['/fueling/']],
                 ['label' => 'Maintenance', 'url' => ['/maintenance/']],
                 ['label' => 'Blog', 'url' => ['/blog/']],
+
+            ]
+        ],
+        ['label' => 'Prod_Sklad',
+            'url' => ['services/index'],
+            'options'=>['class'=>'dropdown'],
+            'visible' => !Yii::$app->user->isGuest,
+            'template' => '<a href="{url}" class="url-class">{label}</a>',
+            'items' => [
+                ['label' => 'Product', 'url' => ['/product/']],
+                ['label' => 'Sklad', 'url' => ['/sklad/']],
             ]
         ],
     ];
