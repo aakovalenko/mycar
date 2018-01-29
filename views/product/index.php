@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\Sklad;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -31,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
                'attribute' => 'sklad_id',
                 'value' => function ($model) {
                     return $model->skladName;
-                }
+                },
+                'filter' => Sklad::getList(),
             ],
 
             'title',
