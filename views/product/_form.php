@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Sklad;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
@@ -12,13 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'sklad_id')->textInput() ?>
+    <?= $form->field($model, 'sklad_id')->dropDownList(ArrayHelper::map(Sklad::find()->all(),'id','title')) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'cost')->textInput() ?>
 
-    <?= $form->field($model, 'type_id')->textInput() ?>
+    <?= $form->field($model, 'type_id')->dropDownList($model::getTypeList()) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 

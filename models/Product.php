@@ -50,4 +50,11 @@ class Product extends \yii\db\ActiveRecord
             'text' => Yii::t('app', 'Text'),
         ];
     }
+
+    public static function getTypeList()
+    {
+        return [
+          'first','second','third'
+        ];
+    }
 }
