@@ -22,6 +22,8 @@ use yii\web\UploadedFile;
  */
 class Blog extends \yii\db\ActiveRecord
 {
+
+    public $tags_array;
     /**
      * @inheritdoc
      */
@@ -56,6 +58,7 @@ class Blog extends \yii\db\ActiveRecord
             [['url'],'unique'],
             [['sort'],'integer', 'max' => 99, 'min' => 1],
             [['url'], 'string', 'max' => 255],
+            [['tags_array'], 'safe'],
             [['picture'],'image', 'extensions' => 'jpg,jpeg,png,gif']
         ];
     }
@@ -76,6 +79,7 @@ class Blog extends \yii\db\ActiveRecord
             'sort' => Yii::t('app', 'Sort'),
             'date_create' => Yii::t('app', 'Date Create'),
             'date_update' => Yii::t('app', 'Date Update'),
+            'tags_array' => Yii::t('app', 'Tags'),
         ];
     }
 
@@ -119,7 +123,27 @@ class Blog extends \yii\db\ActiveRecord
         return $this->hasMany(Tag::className(),['id' => 'tag_id'])->via('blogTag');
     }
 
+    public function afterFind()
+    {
+        $this->tags_array = $this->tags;
+    }
 
+    public function afterSave($insert, $changedAttributes)
+    {
+        $arr = \yii\helpers\ArrayHelper::map($this->tags,'id','id');
 
-
+        foreach ($this->tags as $one)
+        {
+         if (!in_array($one,$arr)) {
+             $model = new Blogtag();
+             $model->blog_id = $this->id;
+             $model->tag_id = $one;
+             $model->save();
+         }
+         if (isset($arr[$one])) {
+             unset($arr[$one]);
+         }
+        }
+        Blogtag::deleteAll(['tag_id'=>$arr]);
+    }
 }

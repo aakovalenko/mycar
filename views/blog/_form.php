@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use vova07\imperavi\Widget;
+use kartik\select2\Select2;
+use app\models\Tag;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
@@ -34,6 +36,18 @@ use vova07\imperavi\Widget;
     <?= $form->field($model, 'status_id')->dropDownList(['off', 'on']) ?>
 
     <?= $form->field($model, 'sort')->textInput() ?>
+
+    <?= $form->field($model, 'tags_array')->widget(Select2::classname(), [
+
+    'data' => \yii\helpers\ArrayHelper::map(Tag::find()->all(),'id','name'),
+
+    'language' => 'en',
+    'options' => ['placeholder' => 'Select tag...', 'multiple' => true],
+    'pluginOptions' => [
+        'tags' => true,
+        'maximumInputLength' => 10
+    ],
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

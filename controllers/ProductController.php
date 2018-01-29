@@ -3,18 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Blog;
-use app\models\BlogSearch;
-use yii\data\ActiveDataProvider;
+use app\models\Product;
+use app\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-
 /**
- * BlogController implements the CRUD actions for Blog model.
+ * ProductController implements the CRUD actions for Product model.
  */
-class BlogController extends Controller
+class ProductController extends Controller
 {
     /**
      * @inheritdoc
@@ -32,12 +30,12 @@ class BlogController extends Controller
     }
 
     /**
-     * Lists all Blog models.
+     * Lists all Product models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BlogSearch();
+        $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,33 +44,8 @@ class BlogController extends Controller
         ]);
     }
 
-    public function actionAll()
-    {
-        $blogs = Blog::find()->with('author')->andWhere(['status_id' => 1]);
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $blogs,
-            'pagination' => [
-                'pageSize' => 5,
-            ]
-        ]);
-
-
-        return $this->render('all',['dataProvider' => $dataProvider]);
-    }
-
-    public function actionOne($url)
-    {
-        if ($blog = Blog::find()->andWhere(['url' => $url])->one())
-        {
-            return $this->render('one',['blog' => $blog]);
-        }
-            throw new NotFoundHttpException('Oh no such article!!!');
-
-    }
-
     /**
-     * Displays a single Blog model.
+     * Displays a single Product model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -85,31 +58,25 @@ class BlogController extends Controller
     }
 
     /**
-     * Creates a new Blog model.
+     * Creates a new Product model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Blog();
-        $model->user_id = Yii::$app->user->id;
-        $model->sort = 50;
+        $model = new Product();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->upload($model);
-
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
 
         return $this->render('create', [
             'model' => $model,
         ]);
     }
 
-
     /**
-     * Updates an existing Blog model.
+     * Updates an existing Product model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -120,7 +87,6 @@ class BlogController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->upload($model);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -130,7 +96,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Deletes an existing Blog model.
+     * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -144,15 +110,15 @@ class BlogController extends Controller
     }
 
     /**
-     * Finds the Blog model based on its primary key value.
+     * Finds the Product model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Blog the loaded model
+     * @return Product the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Blog::find()->with('tags')->andWhere(['id' => $id])->one()) !== null) {
+        if (($model = Product::findOne($id)) !== null) {
             return $model;
         }
 

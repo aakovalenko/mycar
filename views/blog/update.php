@@ -20,10 +20,14 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         'model' => $model,
     ]) ?>
 
+    <?php if ($model->tags !=null ): ?>
+    <?php /*var_dump($model->tags);die(); */?>
     <div class="well">
         <?php foreach ($model->tags as $one) : ?>
         <?=$one->name;?><br>
         <?php endforeach; ?>
     </div>
+    <?php endif; ?>
+
 
 </div>
