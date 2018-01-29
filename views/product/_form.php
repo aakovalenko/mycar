@@ -20,7 +20,7 @@ use app\models\Sklad;
 
     <?= $form->field($model, 'cost')->textInput() ?>
 
-    <?= $form->field($model, 'type_id')->dropDownList($model::getTypeList()) ?>
+    <?= $form->field($model, 'type_id')->dropDownList(\app\models\Product::getTypeList()) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 

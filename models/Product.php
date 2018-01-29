@@ -57,4 +57,14 @@ class Product extends \yii\db\ActiveRecord
           'first','second','third'
         ];
     }
+
+    public function getSklad()
+    {
+        return $this->hasOne(Sklad::className(),['id' => 'sklad_id']);
+    }
+
+    public function getSkladName()
+    {
+        return (isset($this->sklad))? $this->sklad->title: ' не задано';
+    }
 }
