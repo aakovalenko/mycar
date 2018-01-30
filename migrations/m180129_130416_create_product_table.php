@@ -24,7 +24,8 @@ class m180129_130416_create_product_table extends Migration
             'title' => $this->string(50),
             'cost' => $this->integer()->null(),
             'type_id' => $this->integer(),
-            'text' => $this->text()->null()
+            'text' => $this->text()->null(),
+            'date' => $this->string()
         ], $tableOptions);
     }
 

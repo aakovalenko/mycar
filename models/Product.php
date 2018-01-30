@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "product".
@@ -24,13 +26,28 @@ class Product extends \yii\db\ActiveRecord
         return 'product';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['date'],
+
+                ],
+                // если вместо метки времени UNIX используется datetime:
+                // 'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['sklad_id', 'cost', 'type_id'], 'integer'],
+            [['sklad_id', 'cost', 'type_id','date'], 'integer'],
             [['text'], 'string'],
             [['title'], 'string', 'max' => 50],
         ];
@@ -48,6 +65,7 @@ class Product extends \yii\db\ActiveRecord
             'cost' => Yii::t('app', 'Cost'),
             'type_id' => Yii::t('app', 'Type ID'),
             'text' => Yii::t('app', 'Text'),
+            'date' => Yii::t('app', 'Date')
         ];
     }
 
@@ -67,4 +85,12 @@ class Product extends \yii\db\ActiveRecord
     {
         return (isset($this->sklad))? $this->sklad->title: ' не задано';
     }
+
+    public function getTypeName()
+    {
+        $list = $this->getTypeList();
+        return $list[$this->type_id];
+    }
+
+
 }

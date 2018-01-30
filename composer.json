@@ -24,7 +24,8 @@
         "timurmelnikov/yii2-panel-menu": "*",
         "dmstr/yii2-adminlte-asset": "^2.1",
         "vova07/yii2-imperavi-widget": "*",
-        "kartik-v/yii2-widget-select2": "@dev"
+        "kartik-v/yii2-widget-select2": "@dev",
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

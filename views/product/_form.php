@@ -14,7 +14,7 @@ use app\models\Sklad;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'sklad_id')->dropDownList(ArrayHelper::map(Sklad::getList())) ?>
+    <?= $form->field($model, 'sklad_id')->dropDownList(Sklad::getList()) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

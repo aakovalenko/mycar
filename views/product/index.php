@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\models\Sklad;
+use app\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
@@ -31,16 +32,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             [
                'attribute' => 'sklad_id',
-                'value' => function ($model) {
-                    return $model->skladName;
-                },
+                'value' => 'skladName',
+
                 'filter' => Sklad::getList(),
             ],
 
             'title',
             'cost',
-            'type_id',
+             [
+               'attribute' => 'type_id',
+                'value' => 'typeName',
+                'filter' => Product::getTypeList(),
+            ],
             //'text:ntext',
+            [
+                    'attribute' => 'date', 'format' => 'date', 'value' => 'date',
+                     'filter' => \kartik\datecontrol\DateControl::widget([
+                             'model' => $searchModel,
+                             'attribute' => 'date',
+                             'saveFormat' => 'php:U'
+
+                     ])
+            ],
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
