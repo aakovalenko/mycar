@@ -67,7 +67,7 @@ class ProductSearch extends Product
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'text', $this->text])
-        ->andFilterWhere(['>', 'date', $this->date]);
+        ->andFilterWhere(['>=', 'date', $this->date]);
 
         return $dataProvider;
     }
