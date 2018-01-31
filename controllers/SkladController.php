@@ -88,11 +88,19 @@ class SkladController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            if (Yii::$app->request->isAjax) {
+                return $this->renderAjax('_form', [
+                   'model' => $model,
+                ]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+
     }
 
     /**
