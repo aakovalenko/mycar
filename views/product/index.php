@@ -61,6 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
     <?php Pjax::end(); ?>
 </div>
+
+
+
 <?php
 $this->registerJs("
     $('.grid-view tbody tr').on('click', function(){
@@ -68,3 +71,10 @@ $this->registerJs("
        console.log(data); 
     })
 ");
+?>
+
+<?php Pjax::begin() ?>
+<a href="/product/button" class="btn btn-primary">>>>HERE!>>></a>
+<?php Pjax::end();?>
+
+

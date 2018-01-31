@@ -118,6 +118,7 @@ $config = [
                 'blog/view'=> 'blog/view',
                 'blog/update'=> 'blog/update',
                 'blog/<url>' => 'blog/one',
+                'blog/button' => 'blog/button'
 
 
             ],

@@ -28,6 +28,11 @@ class ProductController extends Controller
             ],
         ];
     }
+    public function actionButton()
+    {
+        return $this->renderAjax('_form',['model'=>new Product]);
+
+    }
 
     /**
      * Lists all Product models.

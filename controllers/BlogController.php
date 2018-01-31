@@ -31,6 +31,8 @@ class BlogController extends Controller
         ];
     }
 
+
+
     /**
      * Lists all Blog models.
      * @return mixed
