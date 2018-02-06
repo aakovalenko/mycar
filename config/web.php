@@ -4,6 +4,12 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 use kartik\datecontrol\Module;
+use yii\helpers\ArrayHelper;
+
+$params = ArrayHelper::merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
 
 $config = [
     'id' => 'basic',
@@ -14,8 +20,12 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'modules' => [
-        'Admin' => [
+
+        'admin' => [
             'class' => 'app\modules\admin\Admin',
+        ],
+        'user' => [
+            'class' => 'app\modules\user\User',
         ],
 
         'datecontrol' =>  [
@@ -74,23 +84,12 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'cYCMnbTv-Pv9CwEiIkDV7mYQl83yeo2E',
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
+
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
+
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -100,48 +99,9 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
-
-            'authManager' => [
-                'class' => 'yii\rbac\DbManager',
-                // uncomment if you want to cache RBAC items hierarchy
-                // 'cache' => 'cache',
-            ],
-
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                'blog' => 'blog/all',
-                'blog/index' => 'blog/index',
-                'blog/create' => 'blog/create',
-                'blog/view'=> 'blog/view',
-                'blog/update'=> 'blog/update',
-                'blog/<url>' => 'blog/one',
-                'blog/button' => 'blog/button'
-
-
-            ],
-        ],
-
-        'formatter' => [
-            'dateFormat' => 'yyyy-mm-dd',
-            'decimalSeparator' => ',',
-            'thousandSeparator' => ' ',
-            'currencyCode' => 'EUR',
-        ],
-        /*'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
-                ],
-            ],
-        ],*/
 
 
 
-    ],
-    'params' => $params,
 
 
 ];

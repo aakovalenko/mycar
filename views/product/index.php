@@ -66,15 +66,48 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 $this->registerJs("
+// Получаем id записей
+
     $('.grid-view tbody tr').on('click', function(){
-        var data = $(this).data();
-       console.log(data); 
+        var data = $(this).attr('data-key');
+        $('#modal-info').modal('show');
+        $('#modal-info').find('.modal-title').text('id:' + data);
+        $('#modal-info').find('.modal-body').load('/product/update?id='+data);
+      // console.log(data); 
     })
+    
+    
+    //AJAX
+    
+    function newAjax() //This is our shortcut Ajax request function
+    {
+        var ajax;
+        if (window.XMLHttpRequest) {
+            ajax = new XMLHttpRequest();
+            } else {
+                ajax = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                return ajax;
+    }
+    
+    function LoadMe()
+    {
+        var ajaxHandler = newAjax();
+        ajaxHandler.onreadystatechange = function() {
+            if (ajaxHandler.readyState == 4 && ajaxHandler.status == 200) {
+            document.getElementById('loadMe').innerHTML = ajaxHandler.responseText;
+            }
+            }
+            ajaxHandler.open('GET', 'mypage.html', true);
+            ajaxHandler.send();
+            }
 ");
 ?>
 
 <?php Pjax::begin() ?>
 <a href="/product/button" class="btn btn-primary">>>>HERE!>>></a>
+<div id="loadMe">&nbsp</div>
+<button onclick="LoadMe()">Ajax my page</button>
 <?php Pjax::end();?>
 
 

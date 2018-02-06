@@ -23,3 +23,25 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$js = <<<JS
+ $('form').on('beforeSubmit', function(){
+ var data = $(this).serialize();
+ $.ajax({
+ url: '/sklad/create',
+ type: 'POST',
+ data: data,
+ success: function(res){
+ console.log(res);
+ },
+ error: function(){
+ alert('Error!');
+ }
+ });
+ return false;
+ });
+JS;
+
+
+$this->registerJs($js);
+?>

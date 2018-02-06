@@ -66,6 +66,7 @@ class SkladController extends Controller
     {
         $model = new Sklad();
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
